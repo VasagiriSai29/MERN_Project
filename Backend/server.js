@@ -36,7 +36,9 @@ app.delete ("/api/products/:id", async (req, res) => {
 try{
     await Product.findByIdAndDelete(id);
     res.status(200).json({success: true, message: "Product Deleted"})
-} catch(error) {}
+} catch(error) {
+    res.status(404).json({success: false, message: "Product not found"});
+}
 
 });
 
@@ -46,3 +48,8 @@ app.listen(5000, () => {
     connectDB();
     console.log("Server started at http://localhost:5000");
 });
+
+
+//git add .
+//git commit -m "Next commit"
+//git push
