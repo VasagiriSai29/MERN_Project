@@ -8,6 +8,16 @@ dotenv.config();
 
 const app = express();
 
+app.get("/api/products", async(req, res) => {
+try {
+    const products = await Product.find({});
+    res.status(200).json({success: true, data: products });
+    } catch (error) {
+    console.log("error in fetching products:", error.message);
+    res.status(500).json({success: false, message :"Server Error"});
+    }
+});
+
 app.use(express.json()); // allows us to accept json data in the req.body
 
 app.post("/api/products", async (req, res) => { // Add `async` to use `await` inside the route handler
