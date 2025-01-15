@@ -41,7 +41,7 @@ app.post("/api/products", async (req, res) => { // Add `async` to use `await` in
     }
 });
 
-app.put("/api/products/id:", async (req, res) => {
+app.put("/api/products/:id", async (req, res) => {
     const {id} = req.params;
     const Product = req.body;
 
